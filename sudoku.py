@@ -1,4 +1,3 @@
-
 #Test case 1
 P=[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],
    [8,0,0,0,6,0,0,0,3],[4,0,0,8,0,3,0,0,1],[7,0,0,0,2,0,0,0,6],
@@ -80,8 +79,6 @@ def solveIndividual(g):
     if len(g.others)==8:
         P[r][c]=complement(g.others)[0]
         g.solved=1
-        return 1
-    return 0
 
 def solveBlock(ROWS,COLS):
     N,index=[],[]
@@ -99,7 +96,7 @@ def solveBlock(ROWS,COLS):
                 p+=1
                 tr=Grids[j].r
                 tc=Grids[j].c
-                It=j
+                It=index[j]
         if p==1:
             P[tr][tc]=n
             Grids[It].solved=1
@@ -119,7 +116,7 @@ def solveRow(r):
             if n not in Grids[j].others:
                 p+=1
                 tc=Grids[j].c
-                It=j
+                It=index[j]
         if p==1:
             P[r][tc]=n
             Grids[It].solved=1
@@ -139,7 +136,7 @@ def solveCol(c):
             if n not in Grids[j].others:
                 p+=1
                 tr=Grids[j].r
-                It=j
+                It=index[j]
         if p==1:
             P[tr][c]=n
             Grids[It].solved=1
